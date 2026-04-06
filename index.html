@@ -1,0 +1,2509 @@
+<!doctype html>
+<html lang="en" data-theme="default">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RJ Valeo — Technical Project Manager · DriveCentric</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@300;400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --dc-navy: #131416;
+        --dc-navy2: #1a1c1f;
+        --dc-panel: #212426;
+        --dc-border: rgba(255, 255, 255, 0.08);
+        --dc-red: #624ba1;
+        --dc-orange: #8575d7;
+        --dc-grad: linear-gradient(135deg, #624ba1 0%, #19c29a 100%);
+        --dc-grad-h: linear-gradient(135deg, #7c68bf 0%, #22d4a8 100%);
+        --dc-white: #ffffff;
+        --dc-off: #efedf6;
+        --dc-mid: #9a9ab0;
+        --dc-dim: #4a4760;
+        --dc-green: #19c29a;
+        --dc-red-soft: #d4caee;
+        --font:
+          "Montserrat", "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
+      /* ── Theme: Ultraviolet ─────────────────── */
+      [data-theme="ultraviolet"] {
+        --dc-navy: #08010f;
+        --dc-navy2: #0e0518;
+        --dc-panel: #120a22;
+        --dc-border: rgba(200, 150, 255, 0.1);
+        --dc-red: #a855f7;
+        --dc-orange: #ec4899;
+        --dc-grad: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+        --dc-grad-h: linear-gradient(135deg, #9333ea 0%, #f472b6 100%);
+        --dc-green: #22d3ee;
+        --dc-red-soft: #e9d5ff;
+        --dc-mid: #a78bca;
+        --dc-dim: #5b3f7a;
+        --dc-off: #ede9fe;
+      }
+      [data-theme="ultraviolet"] .hero-bg {
+        background:
+          radial-gradient(
+            ellipse 75% 55% at 50% 35%,
+            rgba(124, 58, 237, 0.18) 0%,
+            transparent 65%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 85% 70%,
+            rgba(236, 72, 153, 0.09) 0%,
+            transparent 55%
+          );
+      }
+      [data-theme="ultraviolet"] .build-card:hover,
+      [data-theme="ultraviolet"] .track-card:hover {
+        border-color: rgba(168, 85, 247, 0.45);
+      }
+
+      /* ── Theme: Terminal ────────────────────── */
+      [data-theme="terminal"] {
+        --dc-navy: #020c06;
+        --dc-navy2: #051209;
+        --dc-panel: #071a0d;
+        --dc-border: rgba(0, 255, 136, 0.09);
+        --dc-red: #00ff88;
+        --dc-orange: #10b981;
+        --dc-grad: linear-gradient(135deg, #00ff88 0%, #10b981 100%);
+        --dc-grad-h: linear-gradient(135deg, #34ffaa 0%, #34d399 100%);
+        --dc-green: #00ff88;
+        --dc-red-soft: #a7f3d0;
+        --dc-mid: #6ee7b7;
+        --dc-dim: #065f46;
+        --dc-off: #d1fae5;
+      }
+      [data-theme="terminal"] .hero-bg {
+        background:
+          radial-gradient(
+            ellipse 75% 55% at 50% 35%,
+            rgba(0, 255, 136, 0.09) 0%,
+            transparent 65%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 85% 70%,
+            rgba(16, 185, 129, 0.07) 0%,
+            transparent 55%
+          );
+      }
+      [data-theme="terminal"] body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background: repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 3px,
+          rgba(0, 255, 136, 0.013) 3px,
+          rgba(0, 255, 136, 0.013) 4px
+        );
+      }
+      [data-theme="terminal"] .build-card:hover,
+      [data-theme="terminal"] .track-card:hover {
+        border-color: rgba(0, 255, 136, 0.45);
+        box-shadow: 0 0 18px rgba(0, 255, 136, 0.08);
+      }
+      [data-theme="terminal"] nav {
+        background: rgba(2, 12, 6, 0.95);
+      }
+
+      /* ── Theme: Afterburner ─────────────────── */
+      [data-theme="afterburner"] {
+        --dc-navy: #0a0000;
+        --dc-navy2: #100505;
+        --dc-panel: #160808;
+        --dc-border: rgba(255, 80, 60, 0.12);
+        --dc-red: #ff3b1f;
+        --dc-orange: #ff7a00;
+        --dc-grad: linear-gradient(135deg, #ff3b1f 0%, #ff7a00 100%);
+        --dc-grad-h: linear-gradient(135deg, #ff5533 0%, #ffaa00 100%);
+        --dc-green: #22c55e;
+        --dc-red-soft: #fecaca;
+        --dc-mid: #b08080;
+        --dc-dim: #6b3030;
+        --dc-off: #fff0ef;
+      }
+      [data-theme="afterburner"] .hero-bg {
+        background:
+          radial-gradient(
+            ellipse 80% 60% at 50% 35%,
+            rgba(255, 59, 31, 0.17) 0%,
+            transparent 65%
+          ),
+          radial-gradient(
+            ellipse 50% 50% at 90% 80%,
+            rgba(255, 122, 0, 0.1) 0%,
+            transparent 55%
+          );
+      }
+      [data-theme="afterburner"] .build-card:hover,
+      [data-theme="afterburner"] .track-card:hover {
+        border-color: rgba(255, 59, 31, 0.5);
+        box-shadow: 0 0 24px rgba(255, 59, 31, 0.1);
+      }
+      [data-theme="afterburner"] .build-card::before,
+      [data-theme="afterburner"] .track-card::before {
+        height: 4px;
+      }
+
+      /* ── Theme: Gold Operator ───────────────── */
+      [data-theme="gold"] {
+        --dc-navy: #090806;
+        --dc-navy2: #0f0d08;
+        --dc-panel: #16120a;
+        --dc-border: rgba(251, 191, 36, 0.1);
+        --dc-red: #f59e0b;
+        --dc-orange: #fbbf24;
+        --dc-grad: linear-gradient(135deg, #d97706 0%, #fbbf24 100%);
+        --dc-grad-h: linear-gradient(135deg, #f59e0b 0%, #fde68a 100%);
+        --dc-green: #22c55e;
+        --dc-red-soft: #fef3c7;
+        --dc-mid: #b8955a;
+        --dc-dim: #6b5420;
+        --dc-off: #fef9ec;
+      }
+      [data-theme="gold"] .hero-bg {
+        background:
+          radial-gradient(
+            ellipse 75% 55% at 50% 35%,
+            rgba(245, 158, 11, 0.12) 0%,
+            transparent 65%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 85% 70%,
+            rgba(251, 191, 36, 0.08) 0%,
+            transparent 55%
+          );
+      }
+      [data-theme="gold"] .build-card:hover,
+      [data-theme="gold"] .track-card:hover {
+        border-color: rgba(251, 191, 36, 0.45);
+        box-shadow: 0 0 22px rgba(245, 158, 11, 0.09);
+      }
+
+      /* ── Theme: Glass ───────────────────────── */
+      [data-theme="glass"] {
+        --dc-navy: #03050f;
+        --dc-navy2: #060918;
+        --dc-panel: rgba(255, 255, 255, 0.04);
+        --dc-border: rgba(255, 255, 255, 0.11);
+      }
+      [data-theme="glass"] #hero::before,
+      [data-theme="glass"] #closer::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(
+            ellipse 70% 50% at 20% 40%,
+            rgba(98, 75, 161, 0.13) 0%,
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 45% at 80% 60%,
+            rgba(25, 194, 154, 0.1) 0%,
+            transparent 55%
+          ),
+          radial-gradient(
+            ellipse 55% 40% at 50% 80%,
+            rgba(99, 102, 241, 0.09) 0%,
+            transparent 55%
+          );
+        animation: aurora 8s ease-in-out infinite alternate;
+      }
+      @keyframes aurora {
+        0% {
+          opacity: 0.7;
+          transform: scale(1) rotate(0deg);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1.06) rotate(1deg);
+        }
+        100% {
+          opacity: 0.7;
+          transform: scale(1) rotate(-1deg);
+        }
+      }
+      [data-theme="glass"] .build-card,
+      [data-theme="glass"] .track-card {
+        background: rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(18px) saturate(1.3);
+        -webkit-backdrop-filter: blur(18px) saturate(1.3);
+      }
+      [data-theme="glass"] .build-card:hover,
+      [data-theme="glass"] .track-card:hover {
+        background: rgba(255, 255, 255, 0.06);
+        border-color: rgba(98, 75, 161, 0.4);
+        box-shadow:
+          0 8px 40px rgba(0, 0, 0, 0.4),
+          0 0 0 1px rgba(98, 75, 161, 0.15);
+      }
+      [data-theme="glass"] nav {
+        background: rgba(3, 5, 15, 0.55);
+        backdrop-filter: blur(24px) saturate(1.5);
+        -webkit-backdrop-filter: blur(24px) saturate(1.5);
+      }
+
+      /* ── Theme Selector UI ──────────────────── */
+      .theme-selector {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        z-index: 200;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 0.5rem;
+      }
+      .theme-panel {
+        display: none;
+        flex-direction: column;
+        gap: 0.3rem;
+        background: rgba(8, 10, 20, 0.97);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 14px;
+        padding: 0.7rem;
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
+        min-width: 210px;
+      }
+      .theme-panel.open {
+        display: flex;
+      }
+      .theme-panel-label {
+        font-size: 0.6rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #334155;
+        padding: 0.1rem 0.3rem 0.55rem;
+        font-family: "Inter", sans-serif;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        margin-bottom: 0.15rem;
+      }
+      .theme-option {
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        padding: 0.48rem 0.55rem;
+        border-radius: 8px;
+        cursor: pointer;
+        border: 1px solid transparent;
+        transition:
+          background 0.15s,
+          border-color 0.15s;
+        font-family: "Inter", sans-serif;
+      }
+      .theme-option:hover {
+        background: rgba(255, 255, 255, 0.05);
+        border-color: rgba(255, 255, 255, 0.08);
+      }
+      .theme-option.active {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.14);
+      }
+      .theme-swatch {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.18);
+      }
+      .theme-option-text {
+        display: flex;
+        flex-direction: column;
+        gap: 0.04rem;
+        flex: 1;
+      }
+      .theme-option-name {
+        font-size: 0.74rem;
+        font-weight: 600;
+        color: #cbd5e1;
+        line-height: 1;
+      }
+      .theme-option-desc {
+        font-size: 0.6rem;
+        color: #334155;
+        line-height: 1.2;
+        margin-top: 0.15rem;
+      }
+      .theme-option.active .theme-option-name {
+        color: #fff;
+      }
+      .theme-option.active .theme-option-desc {
+        color: #64748b;
+      }
+      .theme-check {
+        font-size: 0.7rem;
+        color: #94a3b8;
+        opacity: 0;
+        flex-shrink: 0;
+      }
+      .theme-option.active .theme-check {
+        opacity: 1;
+      }
+      .theme-toggle-btn {
+        display: flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(8, 10, 20, 0.95);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 100px;
+        padding: 0.42rem 0.95rem 0.42rem 0.6rem;
+        cursor: pointer;
+        font-size: 0.68rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: #64748b;
+        font-family: "Inter", sans-serif;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        transition:
+          border-color 0.2s,
+          color 0.2s;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+      .theme-toggle-btn:hover {
+        color: #e2e8f0;
+        border-color: rgba(255, 255, 255, 0.25);
+      }
+      .theme-toggle-btn .t-icon {
+        font-size: 0.9rem;
+        line-height: 1;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        background: var(--dc-navy);
+        color: var(--dc-off);
+        font-family: var(--font);
+        font-weight: 400;
+        line-height: 1.65;
+        overflow-x: hidden;
+        cursor: none;
+      }
+
+      /* ── Cursor ─────────────────────────────────── */
+      .cursor {
+        width: 7px;
+        height: 7px;
+        background: var(--dc-red);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: transform 0.08s;
+      }
+      .cursor-ring {
+        width: 26px;
+        height: 26px;
+        border: 1.5px solid rgba(98, 75, 161, 0.4);
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9998;
+        transform: translate(-50%, -50%);
+        transition:
+          transform 0.28s ease,
+          width 0.18s,
+          height 0.18s,
+          border-color 0.18s;
+      }
+      .cursor-ring.expand {
+        width: 48px;
+        height: 48px;
+        border-color: rgba(98, 75, 161, 0.7);
+      }
+
+      /* ── Progress ─────────────────────────────── */
+      .progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: var(--dc-grad);
+        width: 0%;
+        z-index: 101;
+        transition: width 0.1s linear;
+      }
+
+      /* ── Nav ──────────────────────────────────── */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 3rem;
+        background: rgba(10, 14, 26, 0.92);
+        backdrop-filter: blur(16px);
+        border-bottom: 1px solid var(--dc-border);
+      }
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .nav-logo img {
+        height: 28px;
+        width: auto;
+        filter: brightness(0) invert(1);
+      }
+      .nav-sep {
+        width: 1px;
+        height: 20px;
+        background: var(--dc-border);
+      }
+      .nav-candidate {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--dc-mid);
+        letter-spacing: 0.02em;
+      }
+      .nav-links {
+        display: flex;
+        gap: 1.75rem;
+        list-style: none;
+        align-items: center;
+      }
+      .nav-links span {
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--dc-mid);
+        cursor: pointer;
+        transition: color 0.2s;
+      }
+      .nav-links span:hover {
+        color: var(--dc-white);
+      }
+      .nav-cta {
+        background: var(--dc-grad);
+        color: var(--dc-white) !important;
+        padding: 0.45rem 1.1rem;
+        border-radius: 6px;
+        font-weight: 600 !important;
+        font-size: 0.78rem !important;
+        cursor: pointer;
+        transition: opacity 0.2s;
+      }
+      .nav-cta:hover {
+        opacity: 0.88;
+      }
+
+      /* ── Section base ─────────────────────────── */
+      .section-wrap {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 7rem 3rem 5rem;
+      }
+      .section-divider {
+        height: 1px;
+        background: var(--dc-border);
+        max-width: 1160px;
+        margin: 0 auto;
+      }
+
+      /* ── Section label / rule / title ─────────── */
+      .section-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--dc-red);
+        margin-bottom: 1.25rem;
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease;
+      }
+      .section-eyebrow.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .section-eyebrow::before {
+        content: "";
+        width: 24px;
+        height: 2px;
+        background: var(--dc-grad);
+        border-radius: 2px;
+      }
+      .section-title {
+        font-size: clamp(2rem, 3.8vw, 3.2rem);
+        font-weight: 800;
+        line-height: 1.1;
+        color: var(--dc-white);
+        margin-bottom: 1rem;
+        letter-spacing: -0.02em;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.65s ease 0.05s,
+          transform 0.65s ease 0.05s;
+      }
+      .section-title.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .section-title .grad {
+        background: var(--dc-grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .section-sub {
+        font-size: 1rem;
+        color: var(--dc-mid);
+        max-width: 560px;
+        margin-bottom: 3.5rem;
+        opacity: 0;
+        transform: translateY(16px);
+        transition:
+          opacity 0.65s ease 0.12s,
+          transform 0.65s ease 0.12s;
+      }
+      .section-sub.visible {
+        opacity: 1;
+        transform: none;
+      }
+
+      /* ══════════════════════════════════════════
+     HERO
+  ══════════════════════════════════════════ */
+      #hero {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .signal-bg-wrap {
+        position: relative;
+        overflow: hidden;
+      }
+      .signal-parallax-bg {
+        position: absolute;
+        /* oversized so parallax movement doesn't expose edges */
+        top: -15%;
+        left: 0;
+        width: 100%;
+        height: 130%;
+        background-image: url("images/Logo_panel.png");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center center;
+        mix-blend-mode: multiply;
+        opacity: 0.13;
+        filter: grayscale(0.3) brightness(0.55) contrast(1.1);
+        pointer-events: none;
+        z-index: 0;
+        will-change: transform;
+      }
+      .signal-bg-wrap .section-wrap,
+      .signal-bg-wrap .section-divider {
+        position: relative;
+        z-index: 1;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(
+            ellipse 75% 55% at 50% 35%,
+            rgba(98, 75, 161, 0.12) 0%,
+            transparent 65%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 85% 70%,
+            rgba(25, 194, 154, 0.07) 0%,
+            transparent 55%
+          );
+      }
+      /* Subtle grid */
+      .hero-grid {
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+          linear-gradient(
+            90deg,
+            rgba(255, 255, 255, 0.025) 1px,
+            transparent 1px
+          );
+        background-size: 56px 56px;
+      }
+      /* DriveCentric hero product image */
+      .hero-product-img {
+        position: absolute;
+        right: -2%;
+        bottom: 0;
+        width: 52%;
+        max-width: 720px;
+        opacity: 0.18;
+        pointer-events: none;
+        filter: saturate(0.6);
+      }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 1160px;
+        width: 100%;
+        padding: 0 3rem;
+        padding-top: 5rem;
+      }
+      .hero-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--dc-red);
+        border: 1px solid rgba(98, 75, 161, 0.35);
+        padding: 0.35rem 0.9rem;
+        border-radius: 100px;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: fadeUp 0.7s ease 0.3s forwards;
+      }
+      .hero-badge .dot {
+        width: 6px;
+        height: 6px;
+        background: var(--dc-red);
+        border-radius: 50%;
+        animation: pulse 2s ease infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.5;
+          transform: scale(0.75);
+        }
+      }
+      .hero-title {
+        font-size: clamp(3rem, 6.5vw, 6rem);
+        font-weight: 800;
+        line-height: 1.04;
+        color: var(--dc-white);
+        letter-spacing: -0.03em;
+        margin-bottom: 1.5rem;
+        opacity: 0;
+        animation: fadeUp 0.85s ease 0.45s forwards;
+      }
+      .hero-title .grad {
+        background: var(--dc-grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .hero-sub {
+        font-size: clamp(1rem, 1.8vw, 1.2rem);
+        color: var(--dc-mid);
+        font-weight: 400;
+        max-width: 560px;
+        margin-bottom: 2.5rem;
+        opacity: 0;
+        animation: fadeUp 0.85s ease 0.6s forwards;
+      }
+      .hero-meta {
+        font-size: 0.82rem;
+        color: var(--dc-dim);
+        font-weight: 500;
+        opacity: 0;
+        animation: fadeUp 0.85s ease 0.75s forwards;
+      }
+      .hero-meta strong {
+        color: var(--dc-off);
+        font-weight: 600;
+      }
+      .scroll-hint {
+        position: absolute;
+        bottom: 2.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+        opacity: 0;
+        animation: fadeIn 1s ease 1.3s forwards;
+      }
+      .scroll-hint span {
+        font-size: 0.62rem;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        color: var(--dc-dim);
+        text-transform: uppercase;
+      }
+      .scroll-line {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(to bottom, var(--dc-red), transparent);
+        animation: scrollPulse 2s ease-in-out infinite;
+      }
+
+      /* ══════════════════════════════════════════
+     01 — SIGNAL (proof table)
+  ══════════════════════════════════════════ */
+      .proof-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        padding: 0.75rem 1.5rem;
+        background: rgba(98, 75, 161, 0.07);
+        border: 1px solid var(--dc-border);
+        border-bottom: none;
+      }
+      .proof-header span {
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dc-red);
+      }
+      .proof-grid {
+        border: 1px solid var(--dc-border);
+      }
+      .proof-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border-bottom: 1px solid var(--dc-border);
+        cursor: pointer;
+        opacity: 0;
+        transform: translateY(12px);
+        transition:
+          opacity 0.45s ease,
+          transform 0.45s ease,
+          background 0.2s;
+      }
+      .proof-row:last-child {
+        border-bottom: none;
+      }
+      .proof-row.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .proof-row:hover {
+        background: rgba(98, 75, 161, 0.04);
+      }
+      .proof-row.expanded {
+        background: rgba(98, 75, 161, 0.06);
+      }
+      .proof-cell {
+        padding: 1.25rem 1.5rem;
+      }
+      .proof-cell:first-child {
+        border-right: 1px solid var(--dc-border);
+      }
+      .proof-need {
+        font-size: 0.82rem;
+        font-weight: 500;
+        color: var(--dc-mid);
+        line-height: 1.55;
+      }
+      .proof-answer {
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: var(--dc-white);
+        line-height: 1.6;
+      }
+      .proof-detail {
+        display: none;
+        grid-column: 1 / -1;
+        padding: 0.75rem 1.5rem 1.25rem;
+        font-size: 0.82rem;
+        color: var(--dc-mid);
+        line-height: 1.75;
+        border-top: 1px solid var(--dc-border);
+        background: rgba(255, 255, 255, 0.02);
+      }
+      .proof-row.expanded .proof-detail {
+        display: block;
+      }
+
+      /* ══════════════════════════════════════════
+     02 — THE BUILD
+  ══════════════════════════════════════════ */
+      .build-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.25rem;
+      }
+      .build-card {
+        background: var(--dc-panel);
+        border: 1px solid var(--dc-border);
+        border-radius: 12px;
+        padding: 2rem;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease,
+          border-color 0.2s,
+          background 0.2s;
+        text-decoration: none;
+        color: inherit;
+        display: block;
+        cursor: pointer;
+      }
+      .build-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--dc-grad);
+        border-radius: 12px 12px 0 0;
+      }
+      .build-card.featured {
+        grid-column: 1 / -1;
+      }
+      .build-card.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .build-card:hover {
+        border-color: rgba(98, 75, 161, 0.35);
+        background: rgba(20, 28, 46, 0.9);
+      }
+      .build-name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--dc-white);
+        margin-bottom: 0.2rem;
+        letter-spacing: -0.01em;
+      }
+      .build-stack {
+        font-size: 0.7rem;
+        font-weight: 600;
+        color: var(--dc-red);
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        margin-bottom: 0.15rem;
+      }
+      .build-url {
+        font-size: 0.68rem;
+        color: var(--dc-dim);
+        margin-bottom: 1.25rem;
+        font-family: "Courier New", monospace;
+      }
+      .build-desc {
+        font-size: 0.87rem;
+        color: var(--dc-mid);
+        line-height: 1.75;
+        margin-bottom: 1.25rem;
+      }
+      .build-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+      }
+      .build-tag {
+        font-size: 0.65rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        padding: 0.22rem 0.6rem;
+        border: 1px solid var(--dc-border);
+        border-radius: 4px;
+        color: var(--dc-mid);
+      }
+      .build-tag.red {
+        border-color: rgba(98, 75, 161, 0.35);
+        color: #b8a8e8;
+      }
+      .build-tag.green {
+        border-color: rgba(34, 197, 94, 0.3);
+        color: #4ade80;
+      }
+      .build-tag.orange {
+        border-color: rgba(25, 194, 154, 0.35);
+        color: #22d3a8;
+      }
+      .build-screenshot {
+        margin: 1.25rem 0 1.5rem;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid var(--dc-border);
+      }
+      .build-screenshot img {
+        width: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: 7px;
+      }
+
+      /* ══════════════════════════════════════════
+     03 — PROOF OF METHOD
+  ══════════════════════════════════════════ */
+      .sim-tabs {
+        display: flex;
+        border-bottom: 1px solid var(--dc-border);
+        margin-bottom: 0;
+        gap: 0;
+      }
+      .sim-tab {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--dc-mid);
+        padding: 0.85rem 1.75rem;
+        cursor: pointer;
+        border-bottom: 2px solid transparent;
+        margin-bottom: -1px;
+        transition: all 0.2s;
+        background: none;
+        border-top: none;
+        border-left: none;
+        border-right: none;
+      }
+      .sim-tab:hover {
+        color: var(--dc-white);
+      }
+      .sim-tab.active {
+        color: var(--dc-white);
+        border-bottom-color: var(--dc-red);
+      }
+      .sim-panel {
+        display: none;
+        padding: 2.5rem 0 1rem;
+      }
+      .sim-panel.active {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 3rem;
+      }
+      .sim-left h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        color: var(--dc-white);
+        letter-spacing: -0.02em;
+        margin-bottom: 0.75rem;
+      }
+      .sim-left p {
+        font-size: 0.87rem;
+        color: var(--dc-mid);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+      }
+      .sim-tag {
+        display: inline-block;
+        font-size: 0.65rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.25rem 0.65rem;
+        border: 1px solid;
+        border-radius: 4px;
+        margin-right: 0.4rem;
+        margin-bottom: 0.4rem;
+      }
+      .tag-high {
+        color: #b8a8e8;
+        border-color: rgba(248, 113, 113, 0.35);
+      }
+      .tag-med {
+        color: #22d3a8;
+        border-color: rgba(251, 146, 60, 0.35);
+      }
+      .tag-good {
+        color: #4ade80;
+        border-color: rgba(74, 222, 128, 0.3);
+      }
+      .sim-right h4 {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dc-red);
+        margin-bottom: 1.25rem;
+      }
+      .response-step {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        align-items: flex-start;
+      }
+      .step-num {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--dc-red);
+        min-width: 1.5rem;
+        font-family: "Courier New", monospace;
+        padding-top: 0.1rem;
+      }
+      .step-text {
+        font-size: 0.87rem;
+        color: var(--dc-off);
+        line-height: 1.65;
+      }
+      .lived-it {
+        margin-top: 2rem;
+        padding: 1rem 1.25rem;
+        background: rgba(98, 75, 161, 0.07);
+        border-left: 3px solid var(--dc-red);
+        font-size: 0.78rem;
+        color: rgba(98, 75, 161, 0.9);
+        line-height: 1.65;
+      }
+
+      /* ══════════════════════════════════════════
+     04 — CTO SLIDE
+  ══════════════════════════════════════════ */
+      .cto-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border: 1px solid var(--dc-border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      /* row-based alignment: display:contents collapses the row wrapper
+         so each pair of cells sits directly in the parent 2-col grid */
+      .cto-head-cell {
+        padding: 2rem 2.5rem 1.25rem;
+      }
+      .cto-head-cell:first-child {
+        border-right: 1px solid var(--dc-border);
+        background: rgba(98, 75, 161, 0.04);
+      }
+      .cto-head-cell:last-child {
+        background: rgba(34, 197, 94, 0.03);
+      }
+      .cto-head {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+      .cto-head.worry {
+        color: #b8a8e8;
+      }
+      .cto-head.solved {
+        color: #4ade80;
+      }
+      .cto-row {
+        display: contents;
+      }
+      .cto-cell {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        padding: 0.9rem 2.5rem;
+        font-size: 0.87rem;
+        line-height: 1.6;
+        border-top: 1px solid var(--dc-border);
+      }
+      .cto-cell:nth-child(odd) {
+        border-right: 1px solid var(--dc-border);
+        background: rgba(98, 75, 161, 0.02);
+      }
+      .cto-cell:nth-child(even) {
+        background: rgba(34, 197, 94, 0.015);
+      }
+      .cto-cell .icon {
+        min-width: 1.2rem;
+        font-size: 0.85rem;
+        color: var(--dc-dim);
+        flex-shrink: 0;
+      }
+      .cto-cell.ok .icon {
+        color: var(--dc-green);
+      }
+      .cto-cell .text {
+        color: var(--dc-mid);
+      }
+      .cto-cell .text em {
+        color: var(--dc-off);
+        font-style: normal;
+        font-weight: 600;
+      }
+
+      /* ══════════════════════════════════════════
+     05 — TRACK RECORD
+  ══════════════════════════════════════════ */
+      .track-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.25rem;
+      }
+      .track-card {
+        background: var(--dc-panel);
+        border: 1px solid var(--dc-border);
+        border-radius: 10px;
+        padding: 1.75rem;
+        position: relative;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(18px);
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease,
+          border-color 0.2s;
+      }
+      .track-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+        background: var(--dc-grad);
+        border-radius: 10px 10px 0 0;
+      }
+      .track-card.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .track-card:hover {
+        border-color: rgba(98, 75, 161, 0.3);
+      }
+      .track-company {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: var(--dc-white);
+        letter-spacing: -0.01em;
+        margin-bottom: 0.2rem;
+      }
+      .track-role {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--dc-dim);
+        letter-spacing: 0.04em;
+        margin-bottom: 0.2rem;
+        text-transform: uppercase;
+      }
+      .track-period {
+        font-size: 0.7rem;
+        color: var(--dc-red);
+        font-weight: 500;
+        margin-bottom: 1rem;
+      }
+      .track-desc {
+        font-size: 0.84rem;
+        color: var(--dc-mid);
+        line-height: 1.72;
+        margin-bottom: 1rem;
+      }
+      .track-metric {
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: var(--dc-off);
+        border-top: 1px solid var(--dc-border);
+        padding-top: 0.75rem;
+      }
+
+      /* ══════════════════════════════════════════
+     06 — DAY 1 / DAY 30
+  ══════════════════════════════════════════ */
+      .day-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        border: 1px solid var(--dc-border);
+        border-radius: 12px;
+        overflow: hidden;
+      }
+      .day-col {
+        padding: 2.5rem;
+      }
+      .day-col:first-child {
+        border-right: 1px solid var(--dc-border);
+      }
+      .day-head {
+        font-size: 2.4rem;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.4rem;
+        color: var(--dc-white);
+      }
+      .day-head span {
+        background: var(--dc-grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+      .day-subhead {
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--dc-dim);
+        margin-bottom: 2rem;
+      }
+      .day-item {
+        display: flex;
+        gap: 0.75rem;
+        align-items: flex-start;
+        margin-bottom: 1rem;
+        font-size: 0.87rem;
+        line-height: 1.65;
+        color: var(--dc-mid);
+      }
+      .day-item::before {
+        content: "—";
+        background: var(--dc-grad);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        font-weight: 700;
+        flex-shrink: 0;
+      }
+
+      /* ══════════════════════════════════════════
+     CLOSER
+  ══════════════════════════════════════════ */
+      #closer {
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 8rem 3rem;
+        position: relative;
+      }
+      #closer .hero-bg {
+        border-radius: 0;
+      }
+      .closer-title {
+        font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--dc-white);
+        margin-bottom: 1.25rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition:
+          opacity 0.7s ease,
+          transform 0.7s ease;
+      }
+      .closer-title.visible {
+        opacity: 1;
+        transform: none;
+      }
+      .closer-sub {
+        font-size: 1rem;
+        color: var(--dc-mid);
+        margin-bottom: 2rem;
+        opacity: 0;
+        transition: opacity 0.7s ease 0.1s;
+      }
+      .closer-sub.visible {
+        opacity: 1;
+      }
+      .closer-contact {
+        font-size: 1rem;
+        color: var(--dc-off);
+        margin-bottom: 1.75rem;
+        line-height: 1.8;
+        opacity: 0;
+        transition: opacity 0.7s ease 0.2s;
+      }
+      .closer-contact.visible {
+        opacity: 1;
+      }
+      .closer-links {
+        display: flex;
+        gap: 1.25rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-bottom: 2.5rem;
+        opacity: 0;
+        transition: opacity 0.7s ease 0.3s;
+      }
+      .closer-links.visible {
+        opacity: 1;
+      }
+      .closer-link {
+        font-size: 0.78rem;
+        font-weight: 600;
+        padding: 0.55rem 1.25rem;
+        border: 1px solid var(--dc-border);
+        border-radius: 6px;
+        color: var(--dc-off);
+        text-decoration: none;
+        transition:
+          border-color 0.2s,
+          color 0.2s,
+          background 0.2s;
+      }
+      .closer-link:hover {
+        border-color: rgba(98, 75, 161, 0.5);
+        color: var(--dc-white);
+        background: rgba(98, 75, 161, 0.07);
+      }
+      .closer-link.primary {
+        background: var(--dc-grad);
+        border-color: transparent;
+        color: var(--dc-white);
+      }
+      .closer-link.primary:hover {
+        opacity: 0.88;
+        background: var(--dc-grad-h);
+      }
+      .closer-kicker {
+        font-size: 0.82rem;
+        color: var(--dc-dim);
+        max-width: 440px;
+        line-height: 1.6;
+        font-style: italic;
+        opacity: 0;
+        transition: opacity 0.7s ease 0.4s;
+      }
+      .closer-kicker.visible {
+        opacity: 1;
+      }
+
+      /* Animations */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: none;
+        }
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes scrollPulse {
+        0%,
+        100% {
+          opacity: 0.35;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="progress-bar" id="progressBar"></div>
+    <div class="cursor" id="cursor"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- NAV -->
+    <nav>
+      <div class="nav-logo">
+        <img
+          src="https://framerusercontent.com/images/aFKBH6329Qok9Ty0dIKjVm38.png"
+          alt="DriveCentric"
+          onerror="this.style.display = 'none'"
+        />
+        <div class="nav-sep"></div>
+        <span class="nav-candidate">Richard J. Valeo · TPM Candidate</span>
+      </div>
+      <ul class="nav-links">
+        <li><span onclick="navScroll('signal')">Signal</span></li>
+        <li><span onclick="navScroll('build')">The Build</span></li>
+        <li><span onclick="navScroll('pitch')">Proof</span></li>
+        <li><span onclick="navScroll('cto')">CTO Slide</span></li>
+        <li><span onclick="navScroll('track')">Track Record</span></li>
+        <li><span onclick="navScroll('day')">Day 1 · 30</span></li>
+        <li>
+          <span
+            class="nav-cta"
+            onclick="window.location = 'mailto:rjvaleo@gmail.com'"
+            >Contact</span
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <!-- ══════════ HERO ══════════ -->
+    <section id="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid"></div>
+      <!-- DriveCentric's own product UI image as ghost background -->
+      <img
+        class="hero-product-img"
+        src="https://framerusercontent.com/images/ucxf9sQBj9bfWdW5blghZVfIz3Y.png"
+        alt=""
+        aria-hidden="true"
+      />
+
+      <div class="hero-content">
+        <div class="hero-badge">
+          <div class="dot"></div>
+          Applying for Technical Project Manager
+        </div>
+        <h1 class="hero-title">
+          The PM who ships<br />
+          <span class="grad">and writes the software.</span>
+        </h1>
+        <p class="hero-sub">
+          Twenty years of delivery. Twelve of Agile leadership. A GitHub full of
+          production-deployed code. Here's why that matters to your CTO.
+        </p>
+        <div class="hero-meta">
+          <strong>Richard J. Valeo, CSM</strong> &nbsp;·&nbsp; Georgetown, CO
+          (Remote, U.S.) &nbsp;·&nbsp; 917-664-1750 &nbsp;·&nbsp;
+          rjvaleo@gmail.com
+        </div>
+      </div>
+
+      <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+      </div>
+    </section>
+
+    <div class="signal-bg-wrap">
+      <div class="signal-parallax-bg" id="signalParallaxBg"></div>
+      <div class="section-divider"></div>
+
+      <!-- ══════════ 01 SIGNAL ══════════ -->
+      <div class="section-wrap" id="signal">
+        <div class="section-eyebrow">01 — The Signal</div>
+        <h2 class="section-title">
+          What the job asks for.<br /><span class="grad"
+            >What I actually have.</span
+          >
+        </h2>
+        <p class="section-sub">
+          Click any row. This is an honest audit against the job description.
+        </p>
+
+        <div class="proof-header">
+          <span>What DriveCentric needs</span>
+          <span>What I bring</span>
+        </div>
+        <div class="proof-grid">
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">
+                5+ years managing software development projects
+              </div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                20+ years. Agile, Waterfall, hybrid — matched to the project,
+                not the methodology religion.
+              </div>
+            </div>
+            <div class="proof-detail">
+              Eptura (enterprise SaaS, ~10 distributed teams), A&E Television
+              Networks (12–15 concurrent SVOD release streams), Understood.org
+              (distressed replatform rescue), Paperless Post (iOS + mobile web),
+              DigitasLBI/SunTrust (SAFe, regulated financial services). All CTO-
+              or VP-adjacent delivery roles.
+            </div>
+          </div>
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">
+                3+ years with Senior Leadership and Product Owners on short- and
+                long-term goals
+              </div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                Every role. Roadmap planning, quarterly prioritization, change
+                impact analysis, tradeoff framing — not just attending the
+                meetings, running them.
+              </div>
+            </div>
+            <div class="proof-detail">
+              At Eptura: weekly and monthly leadership reporting with
+              decision-ready delivery health, risk, and scope tradeoff options.
+              At Understood.org: primary POC for executive stakeholders through
+              a high-risk multi-year replatform. At the stealth AI startup:
+              translated ambiguous stakeholder goals into sprint-ready backlogs
+              and measurable KPIs, reported to senior stakeholders weekly.
+            </div>
+          </div>
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">
+                Critical path · cross-team coordination · dependency management
+              </div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                This is the job. Dependency mapping, sequencing, surfacing
+                conflicts before they become incidents.
+              </div>
+            </div>
+            <div class="proof-detail">
+              At Eptura: introduced dependency mapping that surfaced cross-team
+              conflicts multiple sprints earlier, reducing mid-sprint
+              re-planning events by 35%+. At A&E: coordinated 12–15 concurrent
+              release streams. Scrum-of-Scrums facilitation is a consistent
+              pattern across my last four engagements.
+            </div>
+          </div>
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">
+                Active blocker identification and resolution
+              </div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                Proactive, not reactive. Blockers get surfaced in planning, not
+                in standups.
+              </div>
+            </div>
+            <div class="proof-detail">
+              At the stealth AI startup: daily war rooms reduced data processing
+              bottlenecks ~30%. At Paperless Post: DoR coaching cut mid-sprint
+              churn significantly. The pattern: diagnose the system producing
+              the blocker, not just the blocker itself.
+            </div>
+          </div>
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">
+                Jira and Confluence — usage and administration
+              </div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                Not just a user. I configure workflows, design dashboards, and
+                build the visibility layer the org runs on.
+              </div>
+            </div>
+            <div class="proof-detail">
+              At Eptura: standardized Jira workflows, custom fields, and
+              dashboards across a 30+ person engineering and product org. At
+              A&E: transitioned teams from ad-hoc tracking to structured
+              Jira-based execution from scratch. At Paperless Post: standardized
+              Confluence documentation and sprint reporting. This is a repeating
+              pattern, not a one-time effort.
+            </div>
+          </div>
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">
+                Story point estimation · velocity monitoring · course correction
+              </div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                Velocity data is only useful if you know what's causing it. I
+                track the signal, not just the number.
+              </div>
+            </div>
+            <div class="proof-detail">
+              Burndown, velocity trends, cycle time, lead time, spillover,
+              carryover rates — tracked and acted on, not just reported. At the
+              stealth AI startup: re-sequenced delivery pipelines when
+              throughput metrics signaled risk. Estimation coaching is part of
+              backlog readiness practice in every engagement.
+            </div>
+          </div>
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">Integration partner primary POC</div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                External-facing delivery ownership. Scope, timelines, technical
+                handoffs, escalation paths — all owned.
+              </div>
+            </div>
+            <div class="proof-detail">
+              At Understood.org: primary POC for engineering leadership,
+              executive stakeholders, and data/analytics partners. At
+              DigitasLBI/SunTrust: coordinated with offshore QA in Costa Rica in
+              a compliance-aware financial services environment. At Underline
+              Communications: managed third-party partner deliverables across a
+              16-week SaaS build.
+            </div>
+          </div>
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">
+                Hands-on software development experience (plus)
+              </div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                Currently shipping. Not "I used to code." Active GitHub practice
+                with production-deployed applications.
+              </div>
+            </div>
+            <div class="proof-detail">
+              Scale Sequencer: ~2,000 lines of vanilla JS, Web Audio API
+              synthesis engine with ADSR envelopes, dual LFOs, 256-harmonic
+              Fourier PWM, Schroeder reverb, 80+ scale microtonal library. Early
+              career: PHP, HTML, JSP, JavaScript, CSS. The plus sign is fully
+              covered.
+            </div>
+          </div>
+          <div class="proof-row" onclick="toggleProof(this)">
+            <div class="proof-cell">
+              <div class="proof-need">PMP or similar certification (plus)</div>
+            </div>
+            <div class="proof-cell">
+              <div class="proof-answer">
+                CSM (Scrum Alliance, 2014–2028) + SAFe Scrum Master (2014).
+                Twelve years of practice behind both.
+              </div>
+            </div>
+            <div class="proof-detail">
+              The CSM is backed by 12 years of actual Scrum Master practice at
+              scale. SAFe certification comes from the DigitasLBI/SunTrust
+              engagement where I operated in a genuine PI-planning, ART-aligned
+              enterprise environment — not a training course.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-divider"></div>
+    </div>
+    <!-- /.signal-bg-wrap -->
+
+    <!-- ══════════ 02 THE BUILD ══════════ -->
+    <div class="section-wrap" id="build">
+      <div class="section-eyebrow">02 — The Build</div>
+      <h2 class="section-title">
+        The TPM who<br /><span class="grad">reads the diff.</span>
+      </h2>
+      <p class="section-sub">
+        Active GitHub practice. Production deployed. Not portfolio pieces —
+        working software.
+      </p>
+
+      <div class="build-grid">
+        <a
+          class="build-card featured visible"
+          href="https://rjvaleo.github.io/scale-sequencer/"
+          target="_blank"
+        >
+          <div class="build-name">Scale Sequencer / Tuning Module & Synth</div>
+          <div class="build-stack">
+            Vanilla JS (ES2022) · Web Audio API · HTML5 · CSS3 · Zero
+            Dependencies · PWA
+          </div>
+          <div class="build-url">
+            github.com/rjvaleo/scale-sequencer →
+            rjvaleo.github.io/scale-sequencer/
+          </div>
+          <div class="build-desc">
+            ~2,000 lines of production JavaScript. Full synthesizer: 5
+            oscillator types including a 256-harmonic Fourier-series PWM
+            generator, amplitude + filter ADSR envelopes, dual LFOs, 12dB filter
+            with key follow, tempo-synced ping-pong stereo delay,
+            cathedral-scale Schroeder reverb (6 comb filters, 2 all-pass
+            diffusers, RT60 up to 30s). 80+ microtonal scale library. Full
+            preset serialization. YAML CI/CD. 44 commits.
+          </div>
+          <div class="build-tags">
+            <span class="build-tag red">Web Audio API</span>
+            <span class="build-tag red">Audio DSP</span>
+            <span class="build-tag orange">Zero Build Step</span>
+            <span class="build-tag orange">Zero Dependencies</span>
+            <span class="build-tag green">PWA Ready</span>
+            <span class="build-tag green">GitHub Pages</span>
+            <span class="build-tag">YAML CI/CD</span>
+            <span class="build-tag">44 Commits</span>
+          </div>
+          <div class="build-screenshot">
+            <img
+              src="images/scale-sequencer.png"
+              alt="Scale Sequencer interface screenshot"
+            />
+          </div>
+        </a>
+      </div>
+      <p
+        style="
+          margin-top: 2rem;
+          font-size: 0.75rem;
+          color: var(--dc-dim);
+          font-weight: 500;
+        "
+      >
+        20 public repositories &nbsp;·&nbsp; github.com/rjvaleo
+      </p>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════════ 03 PROOF OF METHOD ══════════ -->
+    <div class="section-wrap" id="pitch">
+      <div class="section-eyebrow">03 — Proof of Method</div>
+      <h2 class="section-title">
+        Three situations.<br /><span class="grad">One response pattern.</span>
+      </h2>
+      <p class="section-sub">How I think. Select a scenario.</p>
+
+      <div class="sim-tabs">
+        <button class="sim-tab active" onclick="showSim('scope')">
+          Scope Creep
+        </button>
+        <button class="sim-tab" onclick="showSim('blocker')">
+          Blocked Sprint
+        </button>
+        <button class="sim-tab" onclick="showSim('partner')">
+          Partner Miss
+        </button>
+      </div>
+
+      <div class="sim-panel active" id="sim-scope">
+        <div class="sim-left">
+          <h3>The feature just got bigger.</h3>
+          <p>
+            Mid-sprint. Product wants to add two more acceptance criteria to a
+            story already in development. Engineering says it changes the
+            estimate. The sprint goal is at risk.
+          </p>
+          <span class="sim-tag tag-high">Sprint Goal Risk</span>
+          <span class="sim-tag tag-med">Scope Change</span>
+          <span class="sim-tag tag-med">Stakeholder Pressure</span>
+        </div>
+        <div class="sim-right">
+          <h4>→ Response</h4>
+          <div class="response-step">
+            <div class="step-num">01</div>
+            <div class="step-text">
+              Stop the addition from entering the sprint without a decision.
+              Surface it in the same breath it's raised — not in the next
+              standup.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">02</div>
+            <div class="step-text">
+              Quantify with Engineering: not "it might take longer" — actual
+              estimate delta, specific story, what it bumps.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">03</div>
+            <div class="step-text">
+              Give Product the options: accept as-scoped, defer the additions,
+              or descope something else to make room. Tradeoffs, not a no.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">04</div>
+            <div class="step-text">
+              Document the decision in Jira and note it in the sprint report.
+              Leadership never hears this for the first time in a retro.
+            </div>
+          </div>
+          <div class="lived-it">
+            Lived version: at Eptura, standardized a change impact signal
+            workflow that gave Senior Leadership decision-ready scope/timeline
+            tradeoffs before mid-sprint changes were acted on — not after.
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-panel" id="sim-blocker">
+        <div class="sim-left">
+          <h3>Engineering is waiting on a decision.</h3>
+          <p>
+            A story has been in-progress for 3 days. Blocker: a technical
+            architecture decision requiring sign-off from a senior engineer in
+            back-to-back meetings. Velocity is bleeding.
+          </p>
+          <span class="sim-tag tag-high">Velocity Risk</span>
+          <span class="sim-tag tag-med">Dependency</span>
+          <span class="sim-tag tag-good">Recoverable</span>
+        </div>
+        <div class="sim-right">
+          <h4>→ Response</h4>
+          <div class="response-step">
+            <div class="step-num">01</div>
+            <div class="step-text">
+              Flag it in the blocker log the moment I know — not at end-of-day.
+              Three days already means this was late to surface.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">02</div>
+            <div class="step-text">
+              Reach the senior engineer through a side channel — Slack, a
+              15-minute calendar hold. The goal is a decision, not a meeting.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">03</div>
+            <div class="step-text">
+              If the decision can't happen today: identify what the developer
+              can work in parallel. Velocity protection is routing, not waiting.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">04</div>
+            <div class="step-text">
+              In retro: add a readiness check to Definition of Ready —
+              architecture decisions resolved before a story enters sprint.
+            </div>
+          </div>
+          <div class="lived-it">
+            Lived version: at the stealth AI startup, daily war rooms cut
+            blocker-to-resolution time significantly by creating a clear
+            escalation path and making blockers visible before they compounded.
+          </div>
+        </div>
+      </div>
+
+      <div class="sim-panel" id="sim-partner">
+        <div class="sim-left">
+          <h3>The integration partner missed the milestone.</h3>
+          <p>
+            A third-party partner was supposed to deliver an API update your
+            sprint depends on. It's not there. Your release date is 11 days out.
+          </p>
+          <span class="sim-tag tag-high">Release Risk</span>
+          <span class="sim-tag tag-high">External Dependency</span>
+          <span class="sim-tag tag-med">Stakeholder Visibility</span>
+        </div>
+        <div class="sim-right">
+          <h4>→ Response</h4>
+          <div class="response-step">
+            <div class="step-num">01</div>
+            <div class="step-text">
+              Confirm the miss with the partner and get a revised ETA in
+              writing. This is the timestamp for every decision that follows.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">02</div>
+            <div class="step-text">
+              Assess what can complete without the integration. Stub the
+              dependency if Engineering can build against a contract. Keep the
+              sprint moving.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">03</div>
+            <div class="step-text">
+              Brief Senior Leadership and Product with options: delay, descope,
+              or accept technical risk. They decide — with information, not
+              surprise.
+            </div>
+          </div>
+          <div class="response-step">
+            <div class="step-num">04</div>
+            <div class="step-text">
+              Update the risk log. Add the partner's delivery reliability as a
+              known risk for future planning. It already happened once.
+            </div>
+          </div>
+          <div class="lived-it">
+            Lived version: at Underline Communications, managed third-party
+            partner deliverables and escalation paths across a 16-week SaaS
+            build — external dependency management was a weekly practice, not a
+            crisis response.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════════ 04 CTO SLIDE ══════════ -->
+    <div class="section-wrap" id="cto">
+      <div class="section-eyebrow">04 — The CTO Slide</div>
+      <h2 class="section-title">
+        What leaves your desk<br /><span class="grad">the day I start.</span>
+      </h2>
+      <p class="section-sub">
+        This role reports directly to you. Here's what that means in practice.
+      </p>
+
+      <div class="cto-grid">
+        <!-- header row — direct grid children, sits in row 1 -->
+        <div class="cto-head-cell">
+          <div class="cto-head worry">Right now, you're asking:</div>
+        </div>
+        <div class="cto-head-cell">
+          <div class="cto-head solved">From day one, the answer is:</div>
+        </div>
+        <!-- display:contents collapses each .cto-row, making the two cells
+             direct grid children that share the same auto-sized grid row -->
+        <div class="cto-row">
+          <div class="cto-cell">
+            <div class="icon">—</div>
+            <div class="text">
+              <em
+                >Is that project actually on track, or "on track" until it
+                isn't?</em
+              >
+            </div>
+          </div>
+          <div class="cto-cell ok">
+            <div class="icon">✓</div>
+            <div class="text">
+              Your weekly report is decision-ready. Status, risk, options. Not a
+              status theater slide.
+            </div>
+          </div>
+        </div>
+        <div class="cto-row">
+          <div class="cto-cell">
+            <div class="icon">—</div>
+            <div class="text">
+              <em
+                >Why does Engineering keep getting surprised by scope changes
+                two weeks before a release?</em
+              >
+            </div>
+          </div>
+          <div class="cto-cell ok">
+            <div class="icon">✓</div>
+            <div class="text">
+              Scope changes hit a change impact workflow before they hit the
+              sprint. You see tradeoffs, not surprises.
+            </div>
+          </div>
+        </div>
+        <div class="cto-row">
+          <div class="cto-cell">
+            <div class="icon">—</div>
+            <div class="text">
+              <em
+                >Does anyone own the dependency between the partner API and our
+                sprint?</em
+              >
+            </div>
+          </div>
+          <div class="cto-cell ok">
+            <div class="icon">✓</div>
+            <div class="text">
+              Every dependency is logged, sequenced, and owned. Integration
+              partners have a delivery record and an escalation path.
+            </div>
+          </div>
+        </div>
+        <div class="cto-row">
+          <div class="cto-cell">
+            <div class="icon">—</div>
+            <div class="text">
+              <em
+                >Can I get a weekly status update that doesn't require three
+                follow-up questions?</em
+              >
+            </div>
+          </div>
+          <div class="cto-cell ok">
+            <div class="icon">✓</div>
+            <div class="text">
+              One read. No follow-up questions. If it requires explanation, it
+              wasn't written right.
+            </div>
+          </div>
+        </div>
+        <div class="cto-row">
+          <div class="cto-cell">
+            <div class="icon">—</div>
+            <div class="text">
+              <em>Why is the backlog always a mess right before planning?</em>
+            </div>
+          </div>
+          <div class="cto-cell ok">
+            <div class="icon">✓</div>
+            <div class="text">
+              Backlog hygiene is a weekly practice. Stories enter planning
+              execution-ready or they don't enter planning.
+            </div>
+          </div>
+        </div>
+        <div class="cto-row">
+          <div class="cto-cell">
+            <div class="icon">—</div>
+            <div class="text">
+              <em
+                >Will this TPM actually talk to engineers, or just run
+                ceremonies?</em
+              >
+            </div>
+          </div>
+          <div class="cto-cell ok">
+            <div class="icon">✓</div>
+            <div class="text">
+              I read diffs. I write code. I know what a failing test looks like
+              and why the build is broken. Engineers notice.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════════ 05 TRACK RECORD ══════════ -->
+    <div class="section-wrap" id="track">
+      <div class="section-eyebrow">05 — Track Record</div>
+      <h2 class="section-title">
+        Where this was<br /><span class="grad">already done.</span>
+      </h2>
+      <p class="section-sub">
+        Real engagements. Real complexity. Real delivery.
+      </p>
+
+      <div class="track-grid">
+        <div class="track-card">
+          <div class="track-company">Eptura</div>
+          <div class="track-role">
+            Senior Scrum Master / Senior Program Lead
+          </div>
+          <div class="track-period">Mar 2022 – Dec 2023 · Remote</div>
+          <div class="track-desc">
+            Enterprise SaaS (workplace and asset management). Agile PMO core
+            member supporting ~10 distributed teams across U.S. and India.
+            Standardized Jira workflows and dashboards for a 30+ person org.
+            Weekly CTO-adjacent leadership reporting.
+          </div>
+          <div class="track-metric">
+            35%+ delivery efficiency improvement · PI-aligned cadence ·
+            Scrum-of-Scrums across 10 teams
+          </div>
+        </div>
+        <div class="track-card">
+          <div class="track-company">Understood.org</div>
+          <div class="track-role">
+            Senior Project Manager / Agile Delivery Lead
+          </div>
+          <div class="track-period">Feb 2019 – Mar 2020 · NYC / Remote</div>
+          <div class="track-desc">
+            Brought in to rescue a distressed multi-year replatform (Sitecore →
+            React + Contentful). Stabilized delivery through scope clarity,
+            cadence reset, and proactive risk signaling. Primary POC for
+            engineering leadership and executive stakeholders through full SDLC.
+          </div>
+          <div class="track-metric">
+            Distressed program rescued · Platform migrated · Full SDLC owned
+          </div>
+        </div>
+        <div class="track-card">
+          <div class="track-company">Stealth AI Startup</div>
+          <div class="track-role">
+            Strategic Project Lead / Scrum Master / BA
+          </div>
+          <div class="track-period">Feb 2024 – Aug 2024 · Remote</div>
+          <div class="track-desc">
+            Scrum Master across AI automation and data pipeline initiatives.
+            Requirements elicitation, backlog management, daily war rooms.
+            Re-sequenced delivery pipelines. SQL-level validation across
+            delivery environments.
+          </div>
+          <div class="track-metric">
+            ~30% reduction in data processing time · Proactive exec reporting
+          </div>
+        </div>
+        <div class="track-card">
+          <div class="track-company">A&E Television Networks</div>
+          <div class="track-role">Agile Coach & Senior Scrum Master</div>
+          <div class="track-period">Mar 2016 – Feb 2018 · New York</div>
+          <div class="track-desc">
+            SVOD R&D: History Vault, Lifetime Movie Club. Web, mobile, OTT/CTV.
+            Coordinated 12–15 concurrent release streams across Engineering, UX,
+            QA, and Content. Scrum-of-Scrums across 6 teams. Built Jira
+            visibility from scratch.
+          </div>
+          <div class="track-metric">
+            12–15 concurrent streams · Multi-platform delivery · Jira build-out
+          </div>
+        </div>
+        <div class="track-card">
+          <div class="track-company">DigitasLBI / SunTrust</div>
+          <div class="track-role">Senior Scrum Master (SAFe)</div>
+          <div class="track-period">Mar 2014 – Nov 2014 · Atlanta</div>
+          <div class="track-desc">
+            SAFe enterprise delivery in a governance-heavy, compliance-aware
+            financial services environment. PI planning, ART-aligned cadence,
+            offshore QA coordination (Costa Rica). Audit-ready reporting.
+          </div>
+          <div class="track-metric">
+            SAFe · PI Planning · Regulated delivery · Offshore coordination
+          </div>
+        </div>
+        <div class="track-card">
+          <div class="track-company">OVRSTCH</div>
+          <div class="track-role">Founder / Product, Systems & Ops Lead</div>
+          <div class="track-period">Sep 2024 – Mar 2026 · Remote</div>
+          <div class="track-desc">
+            Self-directed product and operations venture. End-to-end pipelines
+            across physical manufacturing, digital commerce, and fulfillment.
+            Agile cadence, Jira tracking, AI-assisted planning. Proof that the
+            delivery discipline isn't role-dependent.
+          </div>
+          <div class="track-metric">
+            Full-stack delivery ownership · Solo TPM · AI-integrated operations
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════════ 06 DAY 1 / DAY 30 ══════════ -->
+    <div class="section-wrap" id="day">
+      <div class="section-eyebrow">06 — The Ramp</div>
+      <h2 class="section-title">
+        Day one.<br /><span class="grad">Day thirty.</span>
+      </h2>
+      <p class="section-sub">
+        What walks in the door — and what gets built before the first month is
+        out.
+      </p>
+
+      <div class="day-grid">
+        <div class="day-col">
+          <div class="day-head">Day <span>one.</span></div>
+          <div class="day-subhead">What I walk in with</div>
+          <div class="day-item">
+            Delivery framework ready to deploy: risk log, release readiness
+            checklist, dependency map, stakeholder communication cadence. None
+            of this gets built on your time.
+          </div>
+          <div class="day-item">
+            Jira discipline from day one. Dashboards configured, sprint health
+            visible, velocity baseline started, burndown running.
+          </div>
+          <div class="day-item">
+            CSM and SAFe Scrum Master credentials backed by 12+ years of actual
+            Agile delivery across SaaS, media, enterprise, and regulated
+            financial services.
+          </div>
+          <div class="day-item">
+            Active software development practice. I read your engineering team's
+            output the way a PM should — not just as tickets, but as decisions
+            made in code.
+          </div>
+          <div class="day-item">
+            20 years of pattern recognition for what's about to go wrong before
+            it does.
+          </div>
+          <div class="day-item">
+            Executive communication style already calibrated: direct,
+            decision-ready, no noise.
+          </div>
+        </div>
+        <div class="day-col">
+          <div class="day-head">Day <span>thirty.</span></div>
+          <div class="day-subhead">What I will have built</div>
+          <div class="day-item">
+            Every active project's critical path mapped. The two or three most
+            fragile points identified and named — before they become incidents.
+          </div>
+          <div class="day-item">
+            Integration partners contacted, delivery records reviewed,
+            escalation paths documented. No more "who do we call when this
+            breaks."
+          </div>
+          <div class="day-item">
+            Project tracking that gives you full visibility without asking for
+            it. One read per week. Decision-ready.
+          </div>
+          <div class="day-item">
+            Names, working styles, and communication preferences of every
+            engineer, designer, QA lead, and PM I coordinate with. Trust is
+            built early or not at all.
+          </div>
+          <div class="day-item">
+            The backlog in the shape it needs to be for predictable sprints. DoR
+            enforced, acceptance criteria tight, no ambiguous stories entering
+            planning.
+          </div>
+          <div class="day-item">Something shipped.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- ══════════ CLOSER ══════════ -->
+    <section id="closer">
+      <div class="hero-bg"></div>
+      <div class="hero-grid" style="opacity: 0.5"></div>
+      <h2 class="closer-title">Let's get to work.</h2>
+      <p class="closer-sub">
+        This deck shipped on time. So will everything else.
+      </p>
+      <div class="closer-contact">
+        <strong>Richard J. Valeo, CSM</strong><br />
+        917-664-1750 &nbsp;·&nbsp; rjvaleo@gmail.com
+      </div>
+      <div class="closer-links">
+        <a class="closer-link primary" href="mailto:rjvaleo@gmail.com"
+          >Send a note</a
+        >
+        <a
+          class="closer-link"
+          href="https://www.linkedin.com/in/rjvaleo"
+          target="_blank"
+          >LinkedIn</a
+        >
+        <a
+          class="closer-link"
+          href="https://rjvaleo.github.io/rj-polymath-site/"
+          target="_blank"
+          >Portfolio</a
+        >
+        <a
+          class="closer-link"
+          href="https://rjvaleo.github.io/scale-sequencer/"
+          target="_blank"
+          >Scale Sequencer ↗</a
+        >
+        <a
+          class="closer-link"
+          href="https://rjvaleo.github.io/enterprise-viewscreen/"
+          target="_blank"
+          >Warp Screen Sim ↗</a
+        >
+      </div>
+      <div class="closer-kicker">
+        "The TPM who can read the code, run the standup, brief the CTO, and
+        still ship by Friday."
+      </div>
+    </section>
+
+    <script>
+      function navScroll(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // Cursor
+      const cursor = document.getElementById("cursor");
+      const ring = document.getElementById("cursorRing");
+      document.addEventListener("mousemove", (e) => {
+        cursor.style.transform = `translate(${e.clientX - 3.5}px, ${e.clientY - 3.5}px)`;
+        ring.style.transform = `translate(${e.clientX - 13}px, ${e.clientY - 13}px)`;
+      });
+      document
+        .querySelectorAll(
+          "a, button, .proof-row, .build-card, .track-card, .sim-tab, .nav-cta",
+        )
+        .forEach((el) => {
+          el.addEventListener("mouseenter", () => ring.classList.add("expand"));
+          el.addEventListener("mouseleave", () =>
+            ring.classList.remove("expand"),
+          );
+        });
+
+      // Progress
+      window.addEventListener("scroll", () => {
+        const doc = document.documentElement;
+        document.getElementById("progressBar").style.width =
+          (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100 + "%";
+      });
+
+      // Scroll reveal
+      const revealEls = document.querySelectorAll(
+        ".section-eyebrow, .section-title, .section-sub, " +
+          ".proof-row, .track-card, " +
+          ".closer-title, .closer-sub, .closer-contact, .closer-links, .closer-kicker",
+      );
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e, i) => {
+            if (e.isIntersecting)
+              setTimeout(() => e.target.classList.add("visible"), i * 45);
+          });
+        },
+        { threshold: 0.08, rootMargin: "0px 0px -40px 0px" },
+      );
+      revealEls.forEach((el) => observer.observe(el));
+
+      // Proof toggle
+      function toggleProof(row) {
+        const wasOpen = row.classList.contains("expanded");
+        document
+          .querySelectorAll(".proof-row")
+          .forEach((r) => r.classList.remove("expanded"));
+        if (!wasOpen) row.classList.add("expanded");
+      }
+
+      // Sim tabs
+      function showSim(key) {
+        document
+          .querySelectorAll(".sim-tab")
+          .forEach((t) => t.classList.remove("active"));
+        document
+          .querySelectorAll(".sim-panel")
+          .forEach((p) => p.classList.remove("active"));
+        event.currentTarget.classList.add("active");
+        document.getElementById("sim-" + key).classList.add("active");
+      }
+
+      // ── Theme Switcher ──────────────────────────────
+      const THEMES = [
+        {
+          id: "default",
+          name: "DriveCentric",
+          desc: "Purple · Teal · Brand",
+          swatch: "linear-gradient(135deg,#624ba1,#19c29a)",
+        },
+        {
+          id: "ultraviolet",
+          name: "Ultraviolet",
+          desc: "Purple → Hot Pink",
+          swatch: "linear-gradient(135deg,#7c3aed,#ec4899)",
+        },
+        {
+          id: "terminal",
+          name: "Terminal",
+          desc: "Neon Green · Dev",
+          swatch: "linear-gradient(135deg,#00ff88,#10b981)",
+        },
+        {
+          id: "afterburner",
+          name: "Afterburner",
+          desc: "Bold Red · High Contrast",
+          swatch: "linear-gradient(135deg,#ff3b1f,#ff7a00)",
+        },
+        {
+          id: "gold",
+          name: "Gold Operator",
+          desc: "Amber · Editorial",
+          swatch: "linear-gradient(135deg,#d97706,#fbbf24)",
+        },
+        {
+          id: "glass",
+          name: "Glassmorphism",
+          desc: "Frosted · Aurora",
+          swatch: "linear-gradient(135deg,#624ba1 0%,#19c29a 60%,#8575d7 100%)",
+        },
+      ];
+
+      // ── Signal section parallax ─────────────────────────
+      (function () {
+        const bg = document.getElementById("signalParallaxBg");
+        const wrap = bg && bg.closest(".signal-bg-wrap");
+        if (!bg || !wrap) return;
+        function onScroll() {
+          const rect = wrap.getBoundingClientRect();
+          const viewH = window.innerHeight;
+          // only run while section is near viewport
+          if (rect.bottom < -viewH || rect.top > viewH * 2) return;
+          // how far the section centre is from viewport centre, normalised
+          const progress = (rect.top + rect.height / 2 - viewH / 2) / viewH;
+          // bg moves at 40% of scroll speed — slower = deeper parallax feel
+          const shift = progress * wrap.offsetHeight * 0.4;
+          bg.style.transform = "translateY(" + shift.toFixed(2) + "px)";
+        }
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
+      })();
+
+      function buildThemeSelector() {
+        const sel = document.createElement("div");
+        sel.className = "theme-selector";
+
+        const panel = document.createElement("div");
+        panel.className = "theme-panel";
+        panel.id = "themePanel";
+
+        const label = document.createElement("div");
+        label.className = "theme-panel-label";
+        label.textContent = "Select Theme";
+        panel.appendChild(label);
+
+        const saved = localStorage.getItem("dc-theme") || "default";
+        document.documentElement.setAttribute("data-theme", saved);
+
+        THEMES.forEach((t) => {
+          const opt = document.createElement("div");
+          opt.className = "theme-option" + (saved === t.id ? " active" : "");
+          opt.dataset.themeId = t.id;
+          opt.innerHTML = `
+            <div class="theme-swatch" style="background:${t.swatch};"></div>
+            <div class="theme-option-text">
+              <div class="theme-option-name">${t.name}</div>
+              <div class="theme-option-desc">${t.desc}</div>
+            </div>
+            <div class="theme-check">✓</div>`;
+          opt.addEventListener("click", () => {
+            document.documentElement.setAttribute("data-theme", t.id);
+            localStorage.setItem("dc-theme", t.id);
+            panel
+              .querySelectorAll(".theme-option")
+              .forEach((o) => o.classList.remove("active"));
+            opt.classList.add("active");
+            btn.querySelector(".t-label").textContent = t.name;
+          });
+          panel.appendChild(opt);
+        });
+
+        const btn = document.createElement("button");
+        btn.className = "theme-toggle-btn";
+        const activeName =
+          THEMES.find((t) => t.id === saved)?.name || "Default";
+        btn.innerHTML = `<span class="t-icon">🎨</span><span class="t-label">${activeName}</span>`;
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          panel.classList.toggle("open");
+        });
+        document.addEventListener("click", (e) => {
+          if (!sel.contains(e.target)) panel.classList.remove("open");
+        });
+
+        sel.appendChild(panel);
+        sel.appendChild(btn);
+        document.body.appendChild(sel);
+
+        // also wire up the cursor ring for theme buttons
+        sel
+          .querySelectorAll(".theme-option, .theme-toggle-btn")
+          .forEach((el) => {
+            el.addEventListener("mouseenter", () =>
+              ring.classList.add("expand"),
+            );
+            el.addEventListener("mouseleave", () =>
+              ring.classList.remove("expand"),
+            );
+          });
+      }
+
+      buildThemeSelector();
+    </script>
+  </body>
+</html>
